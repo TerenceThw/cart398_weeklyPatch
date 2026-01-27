@@ -1,0 +1,24 @@
+ @title W02-03
+// @license CC BY-NC-SA 4.0 https://creativecommons.org/licenses/by-nc-sa/4.0/
+// @by Terence Tang
+// @date Jan 26, 2026
+
+setCps(160/40/6)
+
+samples ({
+knife: 'https://cdn.freesound.org/previews/189/189203_1737824-lq.mp3',
+knife2: 'https://cdn.freesound.org/previews/617/617411_13222232-lq.mp3',
+glass: 'https://cdn.freesound.org/previews/204/204135_2570743-lq.mp3'
+
+})
+
+s("glass(1,10)? <glass(2, 5)!2>*2 <knife2 knife(2,10), [knife:4 knife(2,3), glass]>*2 < knife(2,10) glass, glass(2,10)!2>*2")
+  .distort(sine.range(0.2,1))
+  //.gain(0.5)
+  .lpf(800)
+  .lpenv(slider(0.92,0,10))
+  .delaytime(1.5)
+  .degradeBy(irand(0.2))
+  .pan("0.2 0.8")
+  
+._punchcard()
