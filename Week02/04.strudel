@@ -1,0 +1,25 @@
+// @title W02-04
+// @license CC BY-NC-SA 4.0 https://creativecommons.org/licenses/by-nc-sa/4.0/
+// @by Terence Tang
+// @date Jan 24, 2026
+
+setCps(160/40/6)
+
+samples ({
+knife: 'https://cdn.freesound.org/previews/189/189203_1737824-lq.mp3',
+knife2: 'https://cdn.freesound.org/previews/617/617411_13222232-lq.mp3',
+glass: 'https://cdn.freesound.org/previews/204/204135_2570743-lq.mp3'
+
+})
+
+
+
+$: s("[<glass/3>? - - knife2:2] [<knife - glass> ~ ~ glass] - knife2")
+  .degradeBy(irand(1.5))
+  .lpf(800)
+  .sometimes(x => x.every(4, y => y.fast(6)))
+  .delay(2.5)
+  .distort(sine.range(0.3,0.7))
+  .chunk(4, x=>x.add(2))
+  .delaytime(1.5)
+._punchcard()
