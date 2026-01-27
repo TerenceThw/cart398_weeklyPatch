@@ -6,19 +6,58 @@
 
 setCps(140/60/4)
 
-$: 
-n(irand(10))
+samples ({
+button: 'https://cdn.freesound.org/previews/842/842757_18370979-lq.mp3',
+water: 'https://cdn.freesound.org/previews/796/796385_2520418-lq.mp3',
+machine: 'https://cdn.freesound.org/previews/209/209578_2558531-lq.mp3'
+
+  
+})
+
+_$:
+s("machine")
+  .sub(4)
+  .seg(irand(6))
+  .delay(1.2)
+  .rel(1.2)
+  .distort("1.2")
+  .lpf(800)
+  .gain(1)
+._punchcard()
+
+
+
+
+
+$:
+s("water")
   .sub(2)
-  .seg(16)
-  .lpf(400)
-  .lpenv(slider(0.92,0,8))
-  .fm(4)
-  .fmwave("square")
-  .detune(20)
-  .s("saw")
+  .seg(irand(2))
+  .delay(0.5)
+  .rel(1.2)
+  .distort("0.4")
+  .lpf(800)
+  .lpenv(slider(0,0,10))
+  .gain(1)
+._punchcard()
+
+
+
+$: 
+s("button")
+  .sub(1)
+  .seg(irand(4))
+  .gain(slider(5.36,0,10))
+  .delay(0.4)
 ._punchcard()
 
 $: 
-s("sbd")
-  .seg(slider(4.216,0,8))
-._scope()
+s("button")
+  .sub(4)
+  .seg(irand(4.5))
+  .gain(slider(5.36,0,10))
+  .lpf(1200)
+  .lpenv(slider(4.85,0,10))
+  .delay(1.2)
+  .gain(0.8)
+._punchcard()
