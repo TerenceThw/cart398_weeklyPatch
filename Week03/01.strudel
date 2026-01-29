@@ -1,0 +1,47 @@
+// @title W03-01
+// @license CC BY-NC-SA 4.0 https://creativecommons.org/licenses/by-nc-sa/4.0/
+// @by Terence Tang
+// @date Jan 29, 2026
+
+setcps(70/60)
+
+$: n("{4 5   <8*2 3*2 2*2>  8 4 5 4 5  }%4")
+  .sound("saw")
+  .scale("a3:minor")
+  .struct("1(<3 5>,8)")
+  .hpf(slider(964.8,0,1200))
+  .gain(slider(0.2838,0,0.6))
+  .legato(1.2)
+  .mask("<0 1 1 0>/8")
+._punchcard()
+
+$: n("{4 5   <8*2 3*2 2*2>  8 4 5 4 5  }%4")
+  .sound("saw")
+  .scale("a3:minor")
+  .struct("1(<3 5>,8)")
+  .cutoff(4500)
+  .hpf(slider(739.2,0,1200))
+  .gain(slider(0.2646,0,0.6))
+  .legato(0.5)
+  .mask("<1 1 1 0>/8")
+  .loopAt(4)
+  .cutoff(sine.range(500,5000)) 
+._punchcard()
+
+
+$: n("{4 5 <2*2 3*2 4*2>  8 4  4   }%4")
+  .sound("saw")
+  .scale("a2:minor")
+  .struct("1(<3 5>,8)")
+  .cutoff(sine.range(100,5000))
+  .lpf(slider(552,0,1200))
+  .room(0.6)
+  //.trans(-12)
+._punchcard()
+$: s("bd:4")
+  .bank("tr909")
+  .sub(2)
+  .seg(2)
+  .pan(sine.range(-1,1))
+  .cutoff(sine.range(100,5000)) 
+._punchcard()
