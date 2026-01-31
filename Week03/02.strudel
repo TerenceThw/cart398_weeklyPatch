@@ -1,0 +1,26 @@
+// @title W03-01
+// @license CC BY-NC-SA 4.0 https://creativecommons.org/licenses/by-nc-sa/4.0/
+// @by Terence Tang
+// @date Jan 31, 2026
+
+$: 
+note("c e e c f ".add("<3 12> <4 10> <12  0> 2 "))
+  .chop(2)
+  .detune(4)
+.s("piano")
+  .gain(1.2)
+._punchcard()
+
+
+$: 
+note("c e# e c f ".add("<3 12> <4 10> <12  0>  "))
+  .chop(2)
+  .detune(4)
+  // .seg(16)
+  // .sub(2)
+.s("piano")
+  .legato(0.5)
+  .gain(1.2)
+  .jux(rev)
+._punchcard()
+
