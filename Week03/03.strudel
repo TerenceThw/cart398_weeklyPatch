@@ -1,0 +1,39 @@
+// @title W03-01
+// @license CC BY-NC-SA 4.0 https://creativecommons.org/licenses/by-nc-sa/4.0/
+// @by Terence Tang
+// @date Jan 31, 2026
+
+
+setcpm(170/4)
+
+const tr= chooseCycles("2 5")
+
+$: 
+note("{4 3 2 5 }".add("<5 2><4 2>"))
+  .scale("c3:minor")
+  .lpf(400)
+  .lfo(2.5)
+  .struct("1 0 1 1 0 1 0 1")
+   .lpenv(50)
+  .rarely(x=>x.cutoff(400))
+  .sometimes(x=>x.jux(rev))
+ .delay(0.2)
+  .detune(2)
+.s("square")
+._punchcard()
+
+$: 
+note("{4 3 2 5 }".add("[5 2][4 2]"))
+  .scale("c4:minor")
+  .lpf(400)
+  .lfo(1.2)
+   .lpenv(50)
+  .rarely(x=>x.cutoff(400))
+  .sometimes(x=>x.jux(rev))
+  .delay(0.2)
+  //.struct("1<5 3,8>")
+  .detune(4)
+  //.loopAt(2)
+  .gain(slider(0.178,0,2))
+.s("square")
+._punchcard()
