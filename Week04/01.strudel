@@ -1,0 +1,42 @@
+// @title W04-01
+// @license CC BY-NC-SA 4.0 https://creativecommons.org/licenses/by-nc-sa/4.0/
+// @by Terence Tang
+// @date Feb 7, 2026
+
+setcpm(89/4)
+
+const tr= chooseCycles("<0 -1 1 0>/4").mul("<-1 1>/8")
+const tr2= chooseCycles("<[0 8 3] [0 5 0] [0, 5 8] >/2")
+
+
+$: s("bd")
+.bank("poly800")
+.struct("1")
+
+$: s("sd:2")
+.bank("tr808")
+.beat("2,6,10",8)
+.lpf(6000)
+
+$: s("cabasa")
+.n(run(8))
+.struct("1(6,8)")
+.postgain(10)
+
+
+$: 
+s("supersaw")
+.note("c2")
+.struct("1*4")
+  .lpf(sine.range(500,2000).slow(7))
+  .trans(tr)
+  .trans(tr2)
+._punchcard()
+$: 
+s("supersaw")
+.note("c3")
+.struct("1*8")
+  .lpf(sine.range(500,4000).slow(9))
+  .trans(tr)
+  .trans(tr2)
+._punchcard()
