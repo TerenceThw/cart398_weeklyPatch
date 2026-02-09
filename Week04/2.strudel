@@ -1,0 +1,62 @@
+// @title W04-01
+// @license CC BY-NC-SA 4.0 https://creativecommons.org/licenses/by-nc-sa/4.0/
+// @by Terence Tang
+// @date Feb 8, 2026
+
+setCpm (94/4)
+
+const tr = chooseCycles ("<0 0 -1 1>/4")
+const tr2 = chooseCycles ("<[0,4,7] <[5 0 -2] [0,5,10]> [0,5, -1]>/2")
+
+$: 
+s("sbd")
+.sub(3)
+.seg(3)
+  .postgain(0.5)
+._punchcard()
+$:
+s("bd")
+.bank("tr909")
+  .struct("0 1 1 0 ")
+  .sub(2)
+  .seg(4)
+._punchcard()
+
+$:
+s("sd:2")
+.bank("tr808")
+.struct("0 0 1 0")
+  .fast(2)
+.lpf(6000)
+._punchcard()
+
+
+$: 
+s("supersaw")
+.lpf(sine.range(400,4000))
+  .struct("1*6")
+.trans(tr)
+.trans(tr2)
+
+$: 
+s("supersaw")
+.lpf(sine.range(400,4000))
+  .struct("1*8")
+  .pan(sine.range(.2,.8))
+.trans(tr)
+
+
+$:
+s("pulse")
+.note(irand(9))
+  .sub(2)
+  .seg(16)
+  .scale("c:major")
+  .lpf(sine.range(2000,4000))
+  .lpenv(6)
+  .struct("1<4 8> 1<6 8>,8")
+  .rarely(x=>x.jux(rev))
+  .postgain(slider(0.696,0,2))
+  .sustain(0.5)
+  .shape(.3)
+._punchcard()
