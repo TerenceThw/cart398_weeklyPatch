@@ -1,0 +1,35 @@
+// @title W04-01
+// @license CC BY-NC-SA 4.0 https://creativecommons.org/licenses/by-nc-sa/4.0/
+// @by Terence Tang
+// @date Feb 9, 2026
+
+setcpm(140/4)
+
+
+$: s("supersaw")
+  .lpf(300) 
+  .note("g0")
+  .struct("1!2")
+  .postgain(slider(1.315, 0, 5)) 
+  ._scope()
+
+$: s("supersaw")
+  .lpf(sine.range(400, 2000).slow(9))
+  .hpf(200)
+  .note("g2")
+  .struct("1 0 1 0") 
+  .postgain(slider(1.575, 0, 5))
+  ._scope()
+
+
+$: note(" [c1 eb1 bb2 c2 eb2 c3 bb3 eb3]!8")
+  .add(note(14)) 
+  .lpf(slider(2401, 400, 5000))
+  .lpq(slider(6.17, 0, 10))
+  .hpf(slider(842.6, 200, 2000))
+  .add(note("<0 -6 -12>"))
+  .slow(4)
+  .sound("supersaw")
+  //.loopAt(2)
+  .postgain(slider(3.01, 0, 5))
+  ._punchcard()
