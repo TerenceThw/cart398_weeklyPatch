@@ -32,7 +32,7 @@ $:  note("{d2 bb2 c3 bb3 d3 eb3}!8| {c3 f3 bb3 eb2 c2 f2}!8 | {d4 eb4 bb4 bb3 eb
   .slow(4)
   .s("supersaw")
   .lpf(slider(1210.7,100,3000))
-  .hpf(200)
+  .hpf(1000)
   .jux(rev)
   .delay(0.2)
   .delayfb(0.3)
