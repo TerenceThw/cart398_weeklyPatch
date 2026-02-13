@@ -1,0 +1,58 @@
+// @title W04-01
+// @license CC BY-NC-SA 4.0 https://creativecommons.org/licenses/by-nc-sa/4.0/
+// @by Terence Tang
+// @date Feb 12, 2026
+
+setcpm(140/4)
+
+$: s("bd!8")
+   .note("[c4 - ]!8 ")
+  .lfo("3000")
+  .hpf("1200")
+  .delay(.2)
+  .mask("[1 0 0 1]")
+  //.struct("1<2 1>,8")
+._punchcard()
+  
+$: s("sd!8")
+  .note("[d3 -]!4")
+  .bank("ms404") 
+  .lpf("2000")
+  .crush(2)
+  .mask("0 1 0 0 1 ")
+  .lpf("3000")
+._punchcard()
+
+$: s("[hh]!16")
+  .bank("akaimpc60")
+  .gain(.5)
+  .lpf(3000)
+  .note("c3")
+  .mask("[1 0 0 1]!8")
+  .postgain(tri.range(1.5, 4))
+  //.masak("")
+._punchcard()
+$: s("[hh]!16")
+  .bank("tr909")
+  .note("eb3")
+  .mask("[1 0 0 1]")
+  .lpf(sine.range(400,4000))
+  //.masak("")
+._punchcard()
+$: 
+note("[d2*2 bb3] d2 [eb3 bb4]*2 d3 ")
+  .gain("1 0.8 1.2 0.9")
+ // .detune(sine.range("0))
+  .mask("<1!8 0!999>")
+ // .lpf(sine.range(800,4000))
+  .postgain(0.5)
+.sound("supersaw")
+._punchcard()
+$: 
+note("[d2*2 bb3] d2 [eb3 bb4]*2 d3 ")
+  .gain("1 0.8 1.2 0.9")
+  .detune("<0.5!12 1.5!999>")
+  .mask("<0!8 1!999>")
+  .postgain(0.5)
+.sound("supersaw")
+._punchcard()
