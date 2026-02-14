@@ -1,0 +1,77 @@
+// @title W04-01
+// @license CC BY-NC-SA 4.0 https://creativecommons.org/licenses/by-nc-sa/4.0/
+// @by Terence Tang
+// @date Feb 14, 2026
+
+setcpm(140/4)
+
+$: arrange(
+          [8, "<[~ x]!4>!2"],
+          [2,"~"],
+          [8,"<[x x] x x [x x]!>*2"],
+          [2,"~"],
+          [8, "<[x ~ ] x ~  x x [~ x]!2 >"],
+        
+        )
+        .note("eb5 c5 d5 g5 bb5")
+        .chord("c2:m9")
+        .legato(2)
+        .delay(2)      
+        .s("piano")
+        .lpf(2000)
+        .hpf(tri.range(500, 1000))
+        .room(.8)
+        .pan(sine.range(-0.5, 1))
+        .mask("<1!28 0!999>")
+        ._punchcard()
+
+$: arrange(
+          [8, "<[~ x]!4>!2"],
+          [2,"~"],       
+          [8,"<[x x] x x [x x]!>*2"],
+          [2,"~"],
+          [8, "<[~ x]!4>!2"],
+
+        )
+        .note("eb4 c4 d4 g4 bb4")
+        .chord("c1:m9")
+        .legato(3)
+        .delay(2)      
+        .s("supersaw")
+        .lpf(1500)
+        .lpq(15) 
+        .hpf(200)
+        .room(.8)
+        .pan(sine.range(-0.5, 1))
+        .velocity(0.5)
+        .postgain(0.4)
+        .mask("< 0!16 1!12 0!999>")
+        ._punchcard()
+
+
+$: arrange(
+          [8, "<[~ x]!4>!4"],
+          [2,"~"],
+          [8, "<x [x ~]!2 ~ >*8"],
+          [2,"~"],
+          [8,"<~ x [x x]!2 >*8"],
+          [2,"~"],
+          [8, "<x [x ~ ] ~ [x x] >*8"],
+          [2, "~"],
+          [8, "<[~ x]!4>!4"],
+
+        )
+        .note("eb3 c3 d2 g2 bb2")
+        .chord("c1:m9")
+        .legato(.5)
+        .delay(2)      
+        .s("supersaw")
+        .lpf(1500)
+        .lpq(15) 
+        .hpf(200)
+        .room(.8)
+        .pan(sine.range(-0.5, 1))
+        .velocity(0.5)
+        .postgain(0.8)
+        .mask("<0!28 1!999>")
+        ._punchcard()
