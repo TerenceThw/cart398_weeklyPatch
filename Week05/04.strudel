@@ -1,0 +1,44 @@
+/ @title W04-01
+// @license CC BY-NC-SA 4.0 https://creativecommons.org/licenses/by-nc-sa/4.0/
+// @by Terence Tang
+// @date Feb 16, 2026
+
+
+setcpm(140/4)
+
+$: stack(
+   s("bd*4").pan(perlin.range(.6,.4)).gain(.7),
+   s("[~ oh:2]*4 | [oh:2 ~]*4").delay(.5).lpf(1200).sometimes(x=>x.hpf(800)).dist(.5).bank("tr909"),
+   s("[~ cp]*2 cp").sometimes(x=>x.delay(.5)).lpf(perlin.range(800,2400)).wt(".5 .75 .5 1"),
+   s("hh:3*8").lpf(400).bank("tr909").dist(2).pan(perlin.range(.4,.6)).sometimes(x=>x.clip(.5)) .wt(perlin.range(0,1)).lpq(10).gain(.7)
+  
+).postgain(slider(0.525,0,5))._punchcard()
+$: 
+s("wt_digital_curses")
+  .note(irand(0,8))
+  .scale("c4:minor")
+  .lpf(perlin.range(1200,2400))
+  .struct("~ 1 ~ 0")
+  .hpf(1000)
+  .dist(.8)
+  .delay(.5)
+  .gain(.4)
+._punchcard()
+
+
+$:
+s("wt_digital_curses")
+  .note("<c2 d2 ef2 g2>*2")
+  .scale("c2:minor")
+  .delay(.25)
+  .struct("1(3,8) [0 1(3,8)]")
+  .jux(rev)
+  .gain(.7)
+  .lpf(perlin.range(1000,3000))
+  .dist(.4)
+  .postgain(slider(1.844,1,5))
+._punchcard()
+
+
+
+all(x => x.room(.2).sz(.5))
