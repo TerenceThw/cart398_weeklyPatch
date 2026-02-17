@@ -29,7 +29,7 @@ s("wt_digital_curses")
 $:
 s("wt_digital_curses")
   .note("<c2 d2 ef2 g2>*2")
-  .scale("c2:minor")
+  .scale("c3:minor")
   .delay(.25)
   .struct("1(3,8) [0 1(3,8)]")
   .jux(rev)
