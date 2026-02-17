@@ -12,7 +12,7 @@ $: stack(
    s("[~ cp]*2 cp").sometimes(x=>x.delay(.5)).lpf(perlin.range(800,2400)).wt(".5 .75 .5 1"),
    s("hh:3*8").lpf(400).bank("tr909").dist(2).pan(perlin.range(.4,.6)).sometimes(x=>x.clip(.5)) .wt(perlin.range(0,1)).lpq(10).gain(.7)
   
-).postgain(slider(0.525,0,5))._punchcard()
+).postgain(slider(2.22,0,5))._punchcard()
 $: 
 s("wt_digital_curses")
   .note(irand(0,8))
