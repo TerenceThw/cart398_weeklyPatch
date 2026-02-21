@@ -1,0 +1,34 @@
+// @title W04-01
+// @license CC BY-NC-SA 4.0 https://creativecommons.org/licenses/by-nc-sa/4.0/
+// @by Terence Tang
+// @date Feb 21, 2026
+
+setcpm(140/4)
+
+
+let intro =stack(
+
+  s("bd!8").bank("tr909").lpf(3600),
+  s("[~ [sd ~]]!4").lpf(3600),
+  s("[[cp ~]]!2").bank("tr909").lpf(3600),
+  s("[hh ~]!4"),bank("tr909").lpf(400)
+
+  )._punchcard()
+
+let twisted =stack(
+  note(" [d2 c2 g2 bb2]*2").scale("c:minor").sound("supersaw").dist(1.2).delay(.5).sometimes(x=>x.jux(rev))
+  .lpf(2400).crush(3.5)
+)._punchcard()
+let melody =stack(
+  note(" [d2 c2 g2 bb2]*2").scale("c:minor").sound("supersaw").dist(1.2).sometimes(x=>x.jux(rev))
+  .lpf(3600).legato(2),
+  s("bd!8").bank("tr909").lpf(1200),
+  s("[~ sd]!4").bank("tr909").lpf(3600),
+  s("[cp ~]!4").bank("tr909")
+)._punchcard()
+  
+arrange(
+[8, intro],
+[8,twisted.mask("1 0 [1~]")],  
+ [8,melody.mask("1 0  [~1] 1")]
+)
