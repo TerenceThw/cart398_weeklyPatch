@@ -1,0 +1,46 @@
+// @title W04-01
+// @license CC BY-NC-SA 4.0 https://creativecommons.org/licenses/by-nc-sa/4.0/
+// @by Terence Tang
+// @date Feb 22, 2026
+
+setcpm(140/4)
+
+
+let intro = stack(
+ s("supersaw").n("1!4").lpf(perlin.range(800,2400)).postgain(perlin.range(.4,.6)).mask("<0!2 1!999>"), 
+ s("[~!4 [~ bd:5]]!4").lpf(2400).bank("tr909").o(3).mask("<0!4 1!40>"),
+ s("crow").n("[1 ~!3]!2").delay(.6).sub(2).seg(16).wtatt(.5).wtenv(.2).lpf(perlin.range(1200,2400)).slow(1.5).mask("<1!4 0!999>"),
+ s("tbd:2!4").duck("3:4:5").duckdepth(.8),
+ note("[0 4 9 7 ]").scale("g3:minor").sound("sawtooth").lpf(2400).lfo(2400).trans(-12).o(4).rarely(x=>x.jux(rev).delay(.3)).mask("<0!6 1!2 0>"),
+  
+  
+  
+)
+
+let groove = stack(
+   note("[0 4 9 7 | 9 7 5 2 ]*2").scale("g3:minor").sound("sawtooth").lpf(2400).lfo(2400).trans(-12).o(4).rarely(x=>x.jux(rev).delay(.3)),
+   s("supersaw").n("1!4").lpf(1200).postgain(perlin.range(.4,.6)).mask("<0!2 1!999>"), 
+   s("[~!4 [~ bd:5]]!4").lpf(2400).bank("tr909").o(3).mask("<0!4 1!40>"),
+  s("tbd:2!4").duck("3:4:5").duckdepth(.8) 
+  )
+
+
+let end = stack(
+ s("supersaw").n("1!4").lpf(perlin.range(800,2400)).postgain(perlin.range(.4,.6)).mask("<1!6 0!999>"), 
+ s("[~!4 [~ bd:5]]!4").lpf(2400).bank("tr909").o(3).mask("<1!8 0!999>"),
+ s("crow").n("[1 ~!3]!2").delay(.6).sub(2).seg(16).wtatt(.5).wtenv(.2).lpf(perlin.range(1200,2400)).slow(1.5).mask("<0!2 1!3 0!999>"),
+ s("tbd:2!4").duck("3:4:5").duckdepth(.8),
+ note("[0 4 9 7 ]").scale("g3:minor").sound("sawtooth").lpf(2400).lfo(2400).trans(-12).o(4).rarely(x=>x.jux(rev).delay(.3)).mask("<1!4 0!999 >"),
+  
+  
+  
+)
+
+
+
+$: arrange(
+ [8,intro],
+  [8,groove],
+  [8,end]
+  
+)._punchcard()
