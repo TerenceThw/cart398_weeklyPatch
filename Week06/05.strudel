@@ -1,0 +1,30 @@
+// @title W04-01
+// @license CC BY-NC-SA 4.0 https://creativecommons.org/licenses/by-nc-sa/4.0/
+// @by Terence Tang
+// @date Feb 23, 2026
+
+samples('github:tidalcycles/dirt-samples')
+
+setcpm(140/4)
+
+let intro1 = note("[c3 d3 bb3 ab3 eb3]!2").scale("c:locrian").s("wt_digital_curses").lpf(2000).delay(.5).o(3).room(.6)
+
+let intro2 = note("[c3 d3 bb3 ab3 eb3]!2").scale("c:locrian").lpf(2000).jux(rev).s("wt_digital_bad_day").scramble(2).o(4)
+
+let intro3= note("d3 eb3 bb3 ab3 g3").scale("c:locrian").s("casio:1").lpf(500).wt(choose("<.2 .5 .8 1>")).rarely(x=>x.delay(.3)).s("wt_digital_basique")
+       .o(4).pan(perlin.range(.2,.8).slow(2))
+
+let intro4= note("d3 eb3 bb3 ab3 g3").scale("c:locrian").lpf(500).wt(choose("<.2 .5 .8 1>")).rarely(x=>x.delay(.3)).s("wt_digital_basique")
+       .o(4).duck("3:4").delay(.3).room(.6).sz(.8)
+
+let intro5 = n(irand(12)).sound("gm_epiano1").struct("1 [1*2 ~]").delay(.6).degradeBy(.3).slow(6).velocity(perlin.range(.3,.8))
+
+let wind1 = s("wind:2").delay(.5).n("[1*8]*2").lpf(1200)
+stack(
+  intro1.mask("1!1 0!2").postgain(1.2),
+  intro2.mask("0!1 1!4").postgain(perlin.range(0,.4)),
+  intro3.postgain(.4).mask("<0!4 1!999>"),
+  intro4.mask("<1!5 0!5>").degradeBy(.3),
+  intro5,
+  wind1.degradeBy(.4)
+)._punchcard()
