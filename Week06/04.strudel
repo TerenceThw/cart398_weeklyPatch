@@ -1,0 +1,30 @@
+// @title W04-01
+// @license CC BY-NC-SA 4.0 https://creativecommons.org/licenses/by-nc-sa/4.0/
+// @by Terence Tang
+// @date Feb 23, 2026
+
+samples('github:tidalcycles/dirt-samples')
+
+setcpm(140/4)
+
+let bass= note("[c1 bb1 db1 g1 eb1 g1 gb1 f1]").s("wt_digital_curses").dist(3).crush(5).scale("c:locrian")
+  .lpf(saw.slow(4).range(400, 2000)).shape(.4).gain(.8).o(4).pan(saw.range(.2,.8))
+
+let bass2= note("[c1 bb1 db1 g1 eb1 g1 gb1 f1]").s("wt_digital_curses").dist(40).crush(5).scale("c:locrian")
+  .lpf(saw.slow(4).range(400, 2000)).shape(.4).gain(.8).o(4)
+  .duck("3:4").room(.5).pan(saw.range(.2,.8))
+
+let kick= s("[hardkick:6 ~!2]!4").hpf(40).lpf(2000).gain(1.5).room(.1).o(3)
+
+let snare = s("[~ sd:1]!2").bank("tr909").coarse(10).shape(.2).gain(.9).jux(rev)
+
+let hat =s("[~ hoover:7 ]*2").crush(10).gain(1.2).delay(.5).crush(3)
+
+
+stack(
+   bass.mask("<0!2 1!4 0!5 1!6>"),
+   bass2.mask("<0!6 1!5 0!6>"),
+   kick,
+   snare.mask("<1!6 0!5 1!6>"),
+   hat.mask("<1!2 0!15>")
+     )._punchcard()
