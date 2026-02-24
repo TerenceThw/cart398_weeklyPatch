@@ -4,27 +4,34 @@
 // @date Feb 23, 2026
 
 samples('github:tidalcycles/dirt-samples')
+setcpm(168/4)
 
-setcpm(140/4)
-
-let bass= note("[c1 bb1 db1 g1 eb1 g1 gb1 f1]").s("wt_digital_curses").dist(3).crush(5).scale("c:locrian")
-  .lpf(saw.slow(4).range(400, 2000)).shape(.4).gain(.8).o(4).pan(saw.range(.2,.8))
-
-let bass2= note("[c1 bb1 db1 g1 eb1 g1 gb1 f1]").s("wt_digital_curses").dist(40).crush(5).scale("c:locrian")
-  .lpf(saw.slow(4).range(400, 2000)).shape(.4).gain(.8).o(4)
-  .duck("3:4").room(.5).pan(saw.range(.2,.8))
-
-let kick= s("[hardkick:6 ~!2]!4").hpf(40).lpf(2000).gain(1.5).room(.1).o(3)
-
-let snare = s("[~ sd:1]!2").bank("tr909").coarse(10).shape(.2).gain(.9).jux(rev)
-
-let hat =s("[~ hoover:7 ]*2").crush(10).gain(1.2).delay(.5).crush(3)
+let Bassline = note("[bb1 c1 bb1 ab2 gb2 bb1 c1@2]") 
+  .s("gm_lead_2_sawtooth").scale("c:locrian")
+  .distort(0.5).distvol(0.3).crush(10) 
+  .lpf(1200).lpq(16)
+  .gain(0.8)
+  .room(0.5).color("cyan")._pianoroll()
+.color("cyan")
 
 
-stack(
-   bass.mask("<0!2 1!4 0!5 1!6>"),
-   bass2.mask("<0!6 1!5 0!6>"),
-   kick,
-   snare.mask("<1!6 0!5 1!6>"),
-   hat.mask("<1!2 0!15>")
-     )._punchcard()
+let voice = chord("c [eb f] gb ~ ab [bb c] ~ eb f ~ [gb f eb] db c bb ~ ab gb f ~ eb [db c] bb")
+  .slow(16).sometimes(x => x.fast(4).jux(rev)).gain(0.65)
+  .s("gm_rock_organ").room(1.5).pan(sine)
+
+let click = s("hh27(16,16)").pan(sine)
+
+let kick = s("reverbkick:1*4").room("2").gain(0.35).lpf(2600).crush(7).color("cyan")._pianoroll().color("cyan")
+
+let oh = s("~ 808oh ~ oh").fast(2).gain(0.10).room(0.8).speed("1").rarely(x=>x.speed("-1")).pan(cosine)
+
+let snare = s("~ ~ ~ 808sd:1?").gain(0.2).crush(4).room(0.5)
+
+stack( 
+  Bassline.mask("<0!8 1!999>"),
+  //voice,
+  kick.mask("<0!6 1!18>"),
+  click.mask("<0!4 1!16>"),
+  oh,
+  snare.mask("<0!8 1!12>")
+)
