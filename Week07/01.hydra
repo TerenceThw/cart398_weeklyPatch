@@ -1,0 +1,13 @@
+// @title W04-01
+// @license CC BY-NC-SA 4.0 https://creativecommons.org/licenses/by-nc-sa/4.0/
+// @by Terence Tang
+// @date march 07, 2026
+
+s0.initImage('https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/1665_Girl_with_a_Pearl_Earring.jpg/960px-1665_Girl_with_a_Pearl_Earring.jpg')
+
+reloadTime = time
+
+pattern=() => src(s0).scale(1, 769/911).scale(0.5,0.52).scale(()=>1 + Math.sin(time)*0.5)
+pattern()
+.diff(pattern().scale(1.2, .75).scale(0.4,0.52).scale(()=>1.5 + Math.sin(time)*1.5).diff(solid(1, .5, 1)))
+.out()
