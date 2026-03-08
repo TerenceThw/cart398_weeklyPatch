@@ -1,0 +1,10 @@
+// @title W04-01
+// @license CC BY-NC-SA 4.0 https://creativecommons.org/licenses/by-nc-sa/4.0/
+// @by Terence Tang
+// @date march 08, 2026
+
+
+noise().modulateScrollX(o0,.5,.5).out(o0)
+osc(.5,.5,10).diff(o0,3).out(o1)
+voronoi(2).modulate(o0,.5).diff(o1).modulateKaleid(o2,5).out(o2)  //modulateKalide jump bettwen 0.5~10
+render(o2)
