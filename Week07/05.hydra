@@ -1,0 +1,9 @@
+// @title W04-01
+// @license CC BY-NC-SA 4.0 https://creativecommons.org/licenses/by-nc-sa/4.0/
+// @by Terence Tang
+// @date march 10, 2026
+
+
+osc(20,.05,.8).color(.5,1.5,.2).saturate(5).modulateKaleid(osc(5,.5,.2), 5).repeat(4,4)
+.rotate(()=>Math.sin(time)).scale(2).modulateScale(o0, 1,.5).luma(.6).colorama(5)
+.out()
