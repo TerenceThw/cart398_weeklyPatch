@@ -1,0 +1,14 @@
+// @title W04-01
+// @license CC BY-NC-SA 4.0 https://creativecommons.org/licenses/by-nc-sa/4.0/
+// @by Terence Tang
+// @date march 11, 2026
+
+await initHydra()
+
+noise(500)
+  .color(1.5,2,5)
+  .modulateRotate(noise(2).pixelate(5,5)).out(o1)
+  src(o0).blend(shape(4).g().thresh().scrollX(.1,.1).mult(o1).invert([-1,1]),0.05)
+     //.thresh()
+      .invert([-1,1],)
+      .out(o0)
