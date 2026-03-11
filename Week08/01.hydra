@@ -1,0 +1,14 @@
+// @title W04-01
+// @license CC BY-NC-SA 4.0 https://creativecommons.org/licenses/by-nc-sa/4.0/
+// @by Terence Tang
+// @date march 11, 2026
+
+osc(60,.5).rotate(Math.PI/2).modulateScale(noise().posterize(),1,1).thresh().out(o0)
+
+osc(60,5).rotate(Math.PI/2).thresh().modulateScale(voronoi(4,5).rotate(Math.PI/2).posterize(),-1,1).out(o1)
+
+osc(160,0).thresh().out(o2)
+
+shape(4,.2,.4).thresh().invert([0,1]).add(o1).out(o3)
+
+render(o1)
