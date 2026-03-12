@@ -1,0 +1,17 @@
+// @title W04-01
+// @license CC BY-NC-SA 4.0 https://creativecommons.org/licenses/by-nc-sa/4.0/
+// @by Terence Tang
+// @date march 11, 2026
+
+await initHydra()
+
+noise(500)
+  .color(()=>Math.sin(time),.5,4)
+  .modulateRotate(osc(4,.5,1).mask(noise(2).pixelate(5,5),0.5))
+  .mult(o1)
+  .out(o0)
+src(o1).diff(osc(.5,.5,4).mask(shape(4).scrollX(.1,.1),0.01))
+.modulateScale(noise(1),.05).out(o1)
+  
+
+render(o0)
