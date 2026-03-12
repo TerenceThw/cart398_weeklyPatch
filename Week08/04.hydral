@@ -1,0 +1,12 @@
+// @title W04-01
+// @license CC BY-NC-SA 4.0 https://creativecommons.org/licenses/by-nc-sa/4.0/
+// @by Terence Tang
+// @date march 11, 2026
+
+await initHydra()
+noise(900).thresh().out(o0)
+src(o1).diff(osc(1,0,1.5).mask(shape(4).scrollX(.5,.5)).scrollY(.5,.5).mult(o0),.02)
+  .modulatePixelate(noise(1.5),0.05)
+  .out(o1)
+
+render(o1)
