@@ -3,12 +3,22 @@
 // @by Terence Tang
 // @date march 11, 2026
 
-osc(60,.5).rotate(Math.PI/2).modulateScale(noise().posterize(),1,1).thresh().out(o0)
+await initHydra()
 
-osc(60,5).rotate(Math.PI/2).thresh().modulateScale(voronoi(4,5).rotate(Math.PI/2).posterize(),-1,1).out(o1)
+let x1= [0.5,1,1.5,2,3,5,7,10];
 
-osc(160,0).thresh().out(o2)
 
-shape(4,.2,.4).thresh().invert([0,1]).add(o1).out(o3)
+noise(()=> {
+   let index = Math.floor(time%x1.length);
+   return x1[index]*100}
+      ,.5)
+  .color(()=>Math.sin(time),5,1)
+  .invert(()=>Math.sin(time))
+  .posterize(5)
+  .out(o0)
+ src(o0).modulateRotate(src(o0).diff(src(o0).pixelate(50,20)
+                                        .scrollX(.05,.05).thresh(5)).diff(src(o0).pixelate(50,20).scrollY(-.05,.05)),.1)
+   .colorama(2).invert([-1,1])
+.out(o1)
 
 render(o1)
