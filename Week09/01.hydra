@@ -1,0 +1,13 @@
+await initHydra()
+
+noise(500,()=> a.fft[0])
+  //.color(()=>a.fft[0],.5,2)     //turn this on whenever you siwtch 
+  .modulateRotate(noise(5,5).scale(()=>a.fft[0]).pixelate(5,5).colorama(()=>a.fft[1]),()=>a.fft[0])
+  //.modulateKaleid(o1,10)        //turn this off too 
+  .out(o0)   
+  
+  solid(0.5,0,0.5).add(shape(4,.2,.2).g().mult(src(o0).color(1.5,.5,2).pixelate(4,4)).repeat().scale(1).mask(src(o0).invert([-1,1])))    //play with these
+.out(o1)
+
+
+render(o1)
