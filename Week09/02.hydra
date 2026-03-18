@@ -1,0 +1,13 @@
+a.show()
+
+ shape(4,.2,.2).scale(()=>a.fft[0]).color(()=>a.fft[1]*20,0,()=>a.fft[3]*10)
+   .modulateKaleid(noise(()=>a.fft[1]*100),P(4,2,12,6),a.fft[1]).scale(.4)
+   .rotate(()=>Math.sin(time))
+   .modulatePixelate(noise(()=>a.fft[0]).mult(src(o0).pixelate(()=>a.fft[1]*.5)))
+  .out(o0)
+noise(1000).thresh(.85)
+  .modulate(osc(2,.02,1))
+  .add(o0)
+.out(o1)
+render(o1)
+ 
