@@ -1,0 +1,13 @@
+
+ 
+   a.show()
+    shape(99).scale(2.5,.4).repeat(2).scrollX(.3,.3)
+  .add(shape(99).scale(2.5,.4).repeat(2).scrollX(()=>a.fft[0],.5))
+.out(o0)
+
+osc(10,2,5).color(1,()=>a.fft[2],1)
+  .modulatePixelate(src(o0).modulateKaleid(o1),5)
+  .modulateRepeatX(src(o0)).modulatePixelate(src(o0).thresh(.5))
+.mult(o0)
+.out(o1)
+render(o1)
