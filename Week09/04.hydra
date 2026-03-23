@@ -1,0 +1,32 @@
+a.show()
+
+noise(50).color(1,()=>a.fft[2]*1.5,0)    //lower it down before switch 1.5
+  .scrollX(()=>a.fft[0]*0.05)
+  .scrollY(()=>a.fft[0]*0.05)
+.modulateRotate(osc(10), () => a.fft[0] * 5)     //play with the osc
+.colorama(0.05)
+.scale(5)              //play wit hthis!
+//.blend(solid(()=>a.fft[0],0,0.5).mult(shape(4,0.2,0.2).blend(src(o0))))
+.out(o0)
+
+src(o0)
+.pixelate(()=>a.fft[1]*10,()=>a.fft[0]*10)
+//.scrollY(()=>a.fft[0]).scrollY(()=>a.fft[1])
+.repeat(10)
+.invert([-.5,.1].smooth(1))
+.scale(2)
+.modulateRotate(osc([4,0.01,0]))
+.modulateKaleid(src(o1).mult(o0))
+.add(noise(100).pixelate(4,4)
+.modulateKaleid(src(o1).pixelate(4))
+.mult(src(o1))
+.saturate(1.5))
+//.invert([-.2,0.2])
+
+.out(o1)
+
+
+
+
+
+render(o1)
