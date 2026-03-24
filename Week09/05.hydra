@@ -1,0 +1,14 @@
+a.show()
+
+
+noise(3).posterize([10,3,5,4].smooth(3))
+.modulateScale(osc(10).rotate(1,1.5),0.5)
+.scrollX(()=>a.fft[0]*0.05)
+.scrollY(()=>a.fft[1]*0.01)
+.modulate(noise(4).pixelate(4,4))
+.blend(noise(2).modulate(src(o0).mult(o0).invert([-1,1])))
+.scale(.7)
+ .add(osc(1.5,.5,()=>a.fft[0]*10).modulateScale(noise(P("<5,10,25>")),0.5))
+ 
+.out(o0)
+
