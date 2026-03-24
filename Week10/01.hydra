@@ -1,0 +1,36 @@
+  a.show() 
+a.setSmooth(0.9) 
+a.setScale(2) 
+    noise(3,0.05,20)
+      .posterize(50,5)
+      .modulateRotate(noise(1).pixelate(4,12))
+      .add(osc(.5,()=>a.fft[1]*0.01,1.5))    //first osc change color
+      .scale(()=>a.fft[1]*5) 
+     // .modulateScale(noise(.2).rotate(.5,1),[2,5,6].fast(1))          //imout.fast
+      .luma(0.2)
+      .out(o0)
+    src(o0)
+.modulateRotate(noise(2).pixelate(4,4).scale(12,10))
+  .repeat([2,5,6],[5,2],()=>a.fft[2])
+  .modulate(src(o0).pixelate(5,4))
+  .modulatePixelate(noise(0.5).modulate(src(o0)).repeat(1.5))
+  //.modulateKaleid(src(o1).thresh(5))
+  //.modulateRotate(src(o1).kaleid(()=>a.fft[o1]))
+.out(o1)
+
+shape(4,.2,.2)
+  .modulateRotate()
+.out(o2)
+
+render(o2)
+
+
+a.show()
+a.setSmooth(0.9) 
+a.setScale(2) 
+  noise(400)
+    .add(osc(1.5,.5,.5).colorama(1,.1,1))
+    .modulateRotate(src(o0).pixelate(4,4).add(osc(()=>a.fft[0])))
+    .modulateKaleid(src(o0).thresh(.5))
+.out(o0)
+
