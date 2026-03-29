@@ -1,11 +1,13 @@
+
  a.setSmooth(.8)
+a.setScale(10)
  a.show()
- speed =0.8
+ speed =0.005
 
 
- shape(4,.2,.2).scale(()=>a.fft[0]).color(()=>a.fft[1]*20,0,()=>a.fft[3]*10)
+ shape(4,.2,.2).scale(()=>a.fft[0]).color(()=>a.fft[1]*20,1,()=>a.fft[3]*9)
    .modulateKaleid(noise(()=>a.fft[1]*100),P(4,2,12,6),a.fft[1]).scale(.4)
-   .rotate(()=>Math.sin(time))
+   //.rotate(()=>Math.sin(time))                       //turn off to be chaotic
    .modulatePixelate(noise(()=>a.fft[0]).mult(src(o0).pixelate(()=>a.fft[1]*.5)))
    //.pixelate(5,5)
    .mult(src(o0).colorama(2.5,.5,.5))
@@ -13,41 +15,51 @@
    //.repeat(2,()=>a.fft[o1])                      //play with this
    .add(noise(1000).thresh(.85)                          //galaxy
    .modulate(osc(2,.02,1)))                              //galaxy
-   .out(o0)
+   .out(o0)                                              //END OF 00
 s0.initImage("https://picsum.photos/1920/1080")
 s1.initImage("https://images.unsplash.com/photo-1564053489984-317bbd824340?q=80&w=596&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D 596w, https://images.unsplash.com/photo-1564053489984-317bbd824340?q=80&w=896&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D 896w, https://images.unsplash.com/photo-1564053489984-317bbd824340?q=80&w=1192&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D 1192w, https://images.unsplash.com/photo-1564053489984-317bbd824340?q=80&w=1196&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D 1196w, https://images.unsplash.com/photo-1564053489984-317bbd824340?q=80&w=1496&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D 1496w, https://images.unsplash.com/photo-1564053489984-317bbd824340?q=80&w=1792&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D 1792w, https://images.unsplash.com/photo-1564053489984-317bbd824340?q=80&w=1796&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D 1796w, https://images.unsplash.com/photo-1564053489984-317bbd824340?q=80&w=2096&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D 2096w, https://images.unsplash.com/photo-1564053489984-317bbd824340?q=80&w=2392&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D 2392w, https://images.unsplash.com/photo-1564053489984-317bbd824340?q=80&w=2396&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D 2396w, https://images.unsplash.com/photo-1564053489984-317bbd824340?q=80&w=2696&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D 2696w, https://images.unsplash.com/photo-1564053489984-317bbd824340?q=80&w=2992&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D 2992w, https://images.unsplash.com/photo-1564053489984-317bbd824340?q=80&w=2996&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D 2996w, https://images.unsplash.com/photo-1564053489984-317bbd824340?q=80&w=3296&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D 3296w, https://images.unsplash.com/photo-1564053489984-317bbd824340?q=80&w=3592&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D 3592w, https://images.unsplash.com/photo-1564053489984-317bbd824340?q=80&w=3596&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D 3596w, https://images.unsplash.com/photo-1564053489984-317bbd824340?q=80&w=3896&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D 3896w, https://images.unsplash.com/photo-1564053489984-317bbd824340?q=80&w=4192&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D 4192w, https://images.unsplash.com/photo-1564053489984-317bbd824340?q=80&w=4196&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D 4196w, https://images.unsplash.com/photo-1564053489984-317bbd824340?q=80&w=4496&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D 4496w, https://images.unsplash.com/photo-1564053489984-317bbd824340?q=80&w=4792&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D 4792w, https://images.unsplash.com/photo-1564053489984-317bbd824340?q=80&w=4796&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D 4796w, https://images.unsplash.com/photo-1564053489984-317bbd824340?q=80&w=5051&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D 5051w")
  src(s1)
-  .scale(()=>a.fft[1]*3.6,.5)     //dont touch 
-        .colorama(()=>a.fft[0]*2.2,.5,()=>a.fft[1]*fast(.05))
-      // .thresh(.5).luma(.5).modulate(src(o1).add(osc(.5,.5,.5)).saturate(()=>a.fft[3]))               //color mode
-    .modulate(src(o1).modulatePixelate(src(o1)))     //dont touch
-    .scrollX(()=>a.fft[1]*0.05,.04)       //on/off
-     .scrollY(.2,()=>a.fft[1]*0.05)
-    //.scale(1.5,1)
+  .scale(()=>a.fft[2]*3.6,.5)     //dont touch 
+        .colorama(()=>a.fft[0]*2.2,.5,()=>a.fft[1]*fast(1.05))
+     //  .thresh(.5).luma(.5).modulate(src(o1).add(osc(.5,.5,.5)).saturate(()=>a.fft[3]))               //color mode
+    // .modulate(src(o1).modulatePixelate(src(o0)).repeat(4))     //dont touch , change btw o1-o3
+   // .scrollX(()=>a.fft[1]*0.005,.08)       //on/off
+    // .scrollY(6,()=>a.fft[1]*0.005)
+    // .blend(src(o0).modulateKaleid(noise(5.5), () => (a.fft[1] > 0.5 ? 2 : 12)).blend(osc(()=>a.fft[0]*0.5,5,2)))
+    .scale(()=>a.fft[3]*5.5,1)                                      //0.05, 0.8, 2,  5
     .brightness(.00005)
     .luma(.2)
-    //.thresh()
+   // .thresh()                                    //black / white .turn colorama off too
+   .contrast(.7) 
 .out(o1)                                         ////////////////////////////////////
 shape(4,.2,.2)
   .thresh()                                     //dont touch
-  .modulate(src(o1))
-  //.scrollX(.95)
-  // .invert([-1,1])                              //reverse
+  .modulate(src(o1))                               // !!!
+  .scrollX(3.95)
+  .invert([-1,1])                              //reverse
   .brightness(()=>Math.random()*.2)           //show shadow (.2~.8)
-  .mult(o1)
-  .modulate(src(o0).thresh())
-  //.repeat(2,2)                                //mult
+  .mult(o0)                                   // between 00 o1 and o3
+  .modulate(src(o0 
+               ).thresh())
+  .repeat(1,1)                                //mult
+  .scale(() => (a.fft[0] > 1.2 ? 1.05 : 1))
+  //.contrast(.7)                                //turn it off if you switch to o0,o3
 .out(o2)                                        //////////////////////////////////////
-  noise(3,0.05,20)
-      .posterize(50,5)
+  noise(3,5,5)
+      .posterize(10,5)
       .modulateRotate(noise(1).pixelate(4,12))
-      .add(osc(.5,()=>a.fft[1]*0.01,1.5))    //first osc change color
-      .scale(()=>a.fft[1]*5) 
-      //.modulateScale(noise(.2).rotate(.5,1),[2,5,6].fast(1))          //imout.fast
-      .luma(0.2)
-      .modulateRotate(noise(2).pixelate(6,2).scale(12,10))
-      .repeat([2,5,6],[5,2],()=>a.fft[2])
-      .modulate(src(o0).pixelate(5,4))
-      //.modulatePixelate(noise(1.5).modulate(src(o0)).repeat(1.5))              //play with the noise
+      .add(osc(()=>a.fft[1]*2,()=>a.fft[1]*.5,2))                      // DONT TOUCH
+      .scale(()=>a.fft[1]*05) 
+      .modulateScale(noise(.2).rotate(.5,1),[2,5,6].fast(1))          //360
+      .luma(.4)
+      //.modulateRotate(noise(2).pixelate(6,2).scale(12,10))
+      //.repeat([2,5,6],[5,2],()=>a.fft[2])                                       //one big scree or multiple small ones
+      //.modulate(src(o0).pixelate(4,4))                                          //make it even more pixelate
+      .modulatePixelate(noise(.8).modulate(src(o0)).repeat(1.5).saturate(.8))              //play with the noise,off for 360
+     .hue(.5)
+    //.posterize(4.5)
+     .contrast(.8)
+     // .scale(.5)
 .out(o3)
-render(o3)
+render(o2)
+
